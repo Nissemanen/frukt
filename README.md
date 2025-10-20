@@ -117,14 +117,11 @@ end
 
 
 # Dictionary of all keywords
+`do`/`end`
+acts like a "code block" that groups together lines of code. Its used in situations where you can only use one line of code, like `if` or `while` statements
+
 `if`
-runs code in-between the nearest `do` and `end`/`else` keywords if the statement after the `if` keyword is true
+runs the code after the condition
 
 `else`
-always comes after an `if` statement, runs the code in-between the nearest `do` and `end`/`else` keywords if the `if` statement above it is false
-
-`do`
-
-
-`end`
-
+always used after an `if` statement, runs the code if the `if` statements condition was false.
