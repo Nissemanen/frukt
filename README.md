@@ -17,10 +17,11 @@ its name cant explain it
 
 as you see, unlike many other languages with comment blocks, these open and closing "symbols" are symmetrical. an example of a unsymmetrical comment block are `/*` and `*/`. you can think of a man opening a scroll
 ![[medieval-man-holding-scroll-isolated-260nw-231944920.webp]]
-
 ## Types
-### Integer
-an integer is a whole, positive or negative number, such as 2, 0 or -14. in code its name is `int`
+### String
+a string is an array of characters, you can use them for easy debugging or showing information to someone using the script.
+#### Interpolation
+String interpolation means that you insert some values to a string, this is good 
 
 ## Declarations 
 ### Variables
@@ -45,22 +46,98 @@ const constant_var = "This wont Change!"
 ### Functions
 to define functions, use the `func` keyword
 ```
-func greet(name) do
-	print(f"Hello {name}!")
+func greet() do
+	print("Hello!")
 end
 ```
+
+you can pass arguments to a function, do this via adding the wished arguments inside the parenthesis, then when the function is ran you pas through the argument inside the parenthesis
+```
+func greet(name) do
+	print("Hello" + name + "!")
+end
+```
+
+you can have multiple arguments via separating them with a comma, you will also see the keyword `return` used here, what it does is when the function gets a call-back (it gets used) the function will "return" the value, so if it returns a number you can use the function and add it to an other number
+```
+func add(x, y) do
+	return x + y
+end
+
+print(2 + add(3, 7)) # output: 12
+```
+
+when calling a function (using it) you can specify what argument is what value
+```
+func greet(age, name) do
+	print(f"Hello {name}! you are {age} years old!")
+end
+
+greet(name="foo", age=25) # output: Hello foo ! you are 25 years old!"
+```
+
 ### Type Declaration
 everything that can have/return a type can be specified (eg variables since they can be a type and functions since they can return types). you do this with a colon
 ```
 var a: int = 0 # this means that "a" is of type int and wont change
 var b := true # this means that "b" is of the initial values type, in this case it'a a bool
 
-func echo(thing : str) : str do # this is a function that takes a string argument and returns a string
+func echo(thing: str): str do # this is a function that takes a string and returns a string
 	retrun thing
 end
 ```
 
+## Conditions
+Conditions are used by some keywords, these need to be a `bool`. that means either `true` or `false`. When that condition is true the keyword runs, that means that that line runs.
+Here are some different keywords that use conditions:
 
+### If/else
+`if` takes in a `bool` condition and runs the code in the line if that condition is `true`, `if` is structured like `if condition code`.
+```
+if true print("Hello world!") # this will always print since the condition is a constant true
+```
+
+here is a better use of the if statement
+```
+if (input("what food do you like? ") == "hamburger") print("")
+```
+in this example you see that I have the condition inside two parentheses. Unlike many languages, it's not necessary for the statement to work, but highly recommended if you want more readable code. since else its hard to distinguish between the condition and code.
+
+if you want to run multiple lines with the if keyword, you can surround the code in a `do` and `end`. think of them as opening and closing brackets, and for people who haven't used a language that uses them before, think of the `do` keyword as telling the `if` keyword to keep running code until the corresponding `end` keyword is reached.
+```
+var x = int(input("number 1: "))
+var y = int(input("number 2: "))
+var opperation = input("opperation(+ or -): ")
+
+if (opperation == "+") do
+	print(f"adding {x} with {y}")
+	print(f"sum is: {x + y}")
+end
+if (opperation == "-") do
+	print(f"subtracting {x} with {y}")
+	print(f"dif is: {x - y}")
+end
+```
+
+## Wild-card things
+here is the rest that I couldn't find a good place to categorize them.
+
+### Concatenation
+you can concatenate almost any two things of same type. Most commonly used for strings, but you can use it for anything like integers, arrays, or lists to name a few.
+What it means to "Concatenate" two values in {THIS_LANG it needs a name like come on} is that you put the second value at the end of the first.
+You concatenate with two dots in-between the two values to concatenate, when concatenating multiple values there is a left bias (that means first the two left-most values will concatenate, then that new value is "substituted" to be concatenated)
+```
+print("foo".."bar") # output: foobar
+print(3..2) # output: 32
+print([3]..[2, 5]) # output: [3, 2, 5]
+```
+
+the `..` just run the `__concat()` function of the first value, that means you can add your own concatenate method to your classes.
+Every time you concatenate built-in types it always returns with the same type.
+
+
+# 
+---
 # Explanations
 here you'll find in depth explanations on how stuff works, and when/why to use stuff.
 ## Variable usage
@@ -123,8 +200,5 @@ runs code in-between the nearest `do` and `end`/`else` keywords if the statement
 `else`
 always comes after an `if` statement, runs the code in-between the nearest `do` and `end`/`else` keywords if the `if` statement above it is false
 
-`do`
-
-
-`end`
-
+`do`+`end`
+the `do` and `end` keywords are always used together, they act like how curly brackets work in many other languages work. they group up multiple lines of code so that its easier to read.
