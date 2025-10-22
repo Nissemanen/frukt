@@ -45,15 +45,10 @@ const constant_var = "This wont Change!"
 > its recommended not to do this since constants don't have the same treatment as normal variables when undefined. i.e. it gets a space in memory as soon as its declared
 ### Functions
 to define functions, use the `func` keyword
-<<<<<<< HEAD
-```
-func greet() do
-	print("Hello!")
-=======
+
 ```gdscript
 func greet(name) do
 	print(f"Hello {name}!")
->>>>>>> refs/remotes/origin/main
 end
 ```
 
@@ -105,7 +100,7 @@ if true print("Hello world!") # this will always print since the condition is a 
 
 here is a better use of the if statement
 ```
-if (input("what food do you like? ") == "hamburger") print("")
+if (input("what food do you like? ") == "hamburger") print("me too")
 ```
 in this example you see that I have the condition inside two parentheses. Unlike many languages, it's not necessary for the statement to work, but highly recommended if you want more readable code. since else its hard to distinguish between the condition and code.
 
@@ -142,7 +137,6 @@ the `..` just run the `__concat()` function of the first value, that means you c
 Every time you concatenate built-in types it always returns with the same type.
 
 
-# 
 ---
 # Explanations
 here you'll find in depth explanations on how stuff works, and when/why to use stuff.
