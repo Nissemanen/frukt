@@ -1,7 +1,7 @@
 # Features
 ## Comments
 There are two different ways to make comments. either single-line comments with a single hashtag like in python, or a comment block using two separate `#--`
-```
+```gdscript
 # this is a single line comment
 #--
 these are all lines inside
@@ -26,7 +26,7 @@ String interpolation means that you insert some values to a string, this is good
 ## Declarations 
 ### Variables
 To declare a variable you use the keyword `var`, then assign a value to it with the equals sign
-```
+```gdscript
 var greeting = "Hello!"
 ```
 
@@ -35,7 +35,7 @@ var greeting = "Hello!"
 > you can find more info under
 ### Constants
 you can declare a constant with the `const` keyword. a constant is like a variable but it cant be changed
-```
+```gdscript
 const constant_var = "This wont Change!"
 ```
 
@@ -45,9 +45,15 @@ const constant_var = "This wont Change!"
 > its recommended not to do this since constants don't have the same treatment as normal variables when undefined. i.e. it gets a space in memory as soon as its declared
 ### Functions
 to define functions, use the `func` keyword
+<<<<<<< HEAD
 ```
 func greet() do
 	print("Hello!")
+=======
+```gdscript
+func greet(name) do
+	print(f"Hello {name}!")
+>>>>>>> refs/remotes/origin/main
 end
 ```
 
@@ -78,7 +84,7 @@ greet(name="foo", age=25) # output: Hello foo ! you are 25 years old!"
 
 ### Type Declaration
 everything that can have/return a type can be specified (eg variables since they can be a type and functions since they can return types). you do this with a colon
-```
+```gdscript
 var a: int = 0 # this means that "a" is of type int and wont change
 var b := true # this means that "b" is of the initial values type, in this case it'a a bool
 
@@ -145,18 +151,18 @@ here you'll find in depth explanations on how stuff works, and when/why to use s
 its not always guaranteed that you have something to save yet, you might know that you need a variable for something, just that you don't know it yet. That's a place where you would want to use an undeclared variable, or rather define a variable without a value. So that you later on can give it one
 
 under the hood, a undefined variable doesn't actually exist. What that means is that variables without any value on declaration doesn't exist, that means...
-```
+```gdscript
 var a
 a = "hello world!"
 ```
 and...
-```
+```gdscript
 var a = "hello world!"
 ```
 use the exact same resources.
 
 if a variable never get a value it will be replaced with `none`. That means...
-```
+```gdscript
 var a
 
 if a do
@@ -164,7 +170,7 @@ if a do
 end
 ```
 and...
-```
+```gdscript
 if none do
 	print(none)
 end
@@ -172,7 +178,7 @@ end
 also use the same resources
 
 but, if a variable isn't declared with a value, and gets one later in the script, it's value will be set to `none`, instead of being replaced. That means...
-```
+```gdscript
 var a
 
 if a do
@@ -182,7 +188,7 @@ else do
 end
 ```
 and...
-```
+```gdscript
 var a = none
 
 if a do
@@ -194,11 +200,15 @@ end
 
 
 # Dictionary of all keywords
+`do`/`end`
+acts like a "code block" that groups together lines of code. Its used in situations where you can only use one line of code, like `if` or `while` statements
+
 `if`
-runs code in-between the nearest `do` and `end`/`else` keywords if the statement after the `if` keyword is true
+runs the code after the condition
 
 `else`
-always comes after an `if` statement, runs the code in-between the nearest `do` and `end`/`else` keywords if the `if` statement above it is false
+always used after an `if` statement, runs the code if the `if` statements condition was false.
 
 `do`+`end`
 the `do` and `end` keywords are always used together, they act like how curly brackets work in many other languages work. they group up multiple lines of code so that its easier to read.
+
