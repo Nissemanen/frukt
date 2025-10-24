@@ -25,8 +25,7 @@ its name cant explain it
 
 > [!NOTE]
 > as you see, unlike many other languages with comment blocks, these open and closing "symbols" are symmetrical. an example of a unsymmetrical comment block are `/*` and `*/`. you can think of a man opening a scroll
-> ![[medieval-man-holding-scroll-isolated-260nw-231944920.webp]]
-
+> ![image](medieval-man-holding-scroll-isolated-260nw-231944920.webp)
 ## Types
 ### String
 a string is an array of characters, you can use them for easy debugging or showing information to someone using the script.
