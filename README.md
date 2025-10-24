@@ -1,3 +1,6 @@
+# Introduction
+Frukt is a dynamically typed programming language inspired mainly from Lua, GdScript and Typescript.
+
 # Features
 ## Comments
 There are two different ways to make comments. either single-line comments with a single hashtag like in python, or a comment block using two separate `#--`
@@ -15,14 +18,51 @@ its name cant explain it
 #-- here is a comment block that could be placed inbetween stuff #--
 ```
 
-as you see, unlike many other languages with comment blocks, these open and closing "symbols" are symmetrical. an example of a unsymmetrical comment block are `/*` and `*/`. you can think of a man opening a scroll
-![[medieval-man-holding-scroll-isolated-260nw-231944920.webp]]
+> [!NOTE]
+> as you see, unlike many other languages with comment blocks, these open and closing "symbols" are symmetrical. an example of a unsymmetrical comment block are `/*` and `*/`. you can think of a man opening a scroll
+> ![[medieval-man-holding-scroll-isolated-260nw-231944920.webp]]
 ## Types
 ### String
 a string is an array of characters, you can use them for easy debugging or showing information to someone using the script.
-#### Interpolation
-String interpolation means that you insert some values to a string, this is good 
 
+strings are made with two quotation marks, both double and single works
+```
+"this is a string!"
+'this too!'
+```
+#### Interpolation
+String interpolation means inserting variable values or expressions directly into a string, this is good for cases where you want dynamic and readable logs, or formatted outputs without messy string concatenation
+
+Interpolation is done via adding an `f` before a string, then using opening/closing braces (`{}`) for inserting values, just like in python.
+```
+print(f"1 + 2 = {1 + 2}") # output: 1 + 2 = 3
+
+var string = "foo"
+prtint(f"{string}bar") # output: foobar
+
+var usr_age = int(input("how old are you?"))
+print(f"you are born year {2025 - age}!")
+```
+### Integer
+An integer is a binary 32 bit value. What that means is that it can store a whole number with the range of `2^32`, which is 4 294 967 296. though to get negative numbers one bit is used, that means you have a range from `2^31` to `-2^31`, that is 2 147 483 648 to -2 147 483 648. 
+### Number
+a `num` is both an integer and float at the same time, it dynamically switches from one to the other when needed, that means a variable set to a number can have both integer or float value.
+the `num` type is fully compatible with integers and floats, that means you can set a number to a int value, and an int to a number value
+```
+var number: num
+number = 1.5 # works
+number = 1 # also works
+
+var integer: int
+var floating_point: float
+integer = number # same as `int(number)`
+floating_point = number # also works, same as `float(number)`
+```
+### Long
+A long is like an integer but it can store massive numbers. `int`'s use 32 bits to store their data, and `long`'s use 64 bits, thats double the amount.
+```
+var my_large_number: long = 
+```
 ## Declarations 
 ### Variables
 To declare a variable you use the keyword `var`, then assign a value to it with the equals sign
@@ -125,7 +165,7 @@ here is the rest that I couldn't find a good place to categorize them.
 
 ### Concatenation
 you can concatenate almost any two things of same type. Most commonly used for strings, but you can use it for anything like integers, arrays, or lists to name a few.
-What it means to "Concatenate" two values in {THIS_LANG it needs a name like come on} is that you put the second value at the end of the first.
+What it means to "Concatenate" two values is that you put the second value at the end of the first.
 You concatenate with two dots in-between the two values to concatenate, when concatenating multiple values there is a left bias (that means first the two left-most values will concatenate, then that new value is "substituted" to be concatenated)
 ```
 print("foo".."bar") # output: foobar
@@ -192,6 +232,9 @@ else do
 end
 ```
 
+# Faq (Frequently Asked Questions)
+**What is "FooBar"?**
+"foobar" is nothing but test names, they are frequently used in programming languages to show how things work and how to do stuff.
 
 # Dictionary of all keywords
 `do`/`end`
