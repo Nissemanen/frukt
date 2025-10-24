@@ -25,13 +25,14 @@ its name cant explain it
 
 > [!NOTE]
 > as you see, unlike many other languages with comment blocks, these open and closing "symbols" are symmetrical. an example of a unsymmetrical comment block are `/*` and `*/`. you can think of a man opening a scroll
+>
 > ![image](medieval-man-holding-scroll-isolated-260nw-231944920.webp)
 ## Types
 ### String
 a string is an array of characters, you can use them for easy debugging or showing information to someone using the script.
 
 strings are made with two quotation marks (both double and single works)
-```
+```gdscript
 "this is a string!"
 'this too!'
 ```
@@ -39,7 +40,7 @@ strings are made with two quotation marks (both double and single works)
 String interpolation means inserting variable values or expressions directly into a string, this is good for cases where you want dynamic and readable logs, or formatted outputs without messy string concatenation
 
 Interpolation is done via adding an `f` before a string, then using opening/closing braces (`{}`) for inserting values, just like in python.
-```
+```gdscript
 print(f"1 + 2 = {1 + 2}") # output: 1 + 2 = 3
 
 var string = "foo"
@@ -56,13 +57,13 @@ Float is short for "Floating point value". Unlike a integer (`int`), a float can
 Floats are used when a number needs decimal precision
 ### Long
 A long is like an integer but it can store massive numbers. `int`'s use 32 bits to store their data, and `long`'s use 64 bits, that's double the amount.
-```
+```gdscrip
 var my_large_number: long = 1e10 # "e" means exponent, so that is equal to `10^10` which is to large for a integer
 ```
 ### Number
 a `num` is all number storing types at the same time, it dynamically switches from one to the other when needed, that means a variable set to a number can have integer, long or float value.
 the `num` type is fully compatible with integers and floats, that means you can set a number to a int value, and an int to a number value
-```
+```gdscript
 var number: num
 number = 1.5 # works
 number = 1 # also works
@@ -103,14 +104,14 @@ end
 ```
 
 you can pass arguments to a function, do this via adding the wished arguments inside the parenthesis, then when the function is ran you pas through the argument inside the parenthesis
-```
+```gdscript
 func greet(name) do
 	print("Hello" + name + "!")
 end
 ```
 
 you can have multiple arguments via separating them with a comma, you will also see the keyword `return` used here, what it does is when the function gets a call-back (it gets used) the function will "return" the value, so if it returns a number you can use the function and add it to an other number
-```
+```gdscript
 func add(x, y) do
 	return x + y
 end
@@ -119,7 +120,7 @@ print(2 + add(3, 7)) # output: 12
 ```
 
 when calling a function (using it) you can specify what argument is what value
-```
+```gdscript
 func greet(age, name) do
 	print(f"Hello {name}! you are {age} years old!")
 end
@@ -138,23 +139,50 @@ func echo(thing: str): str do # this is a function that takes a string and retur
 end
 ```
 
+## Operators
+an operator is a symbol, or a group of symbols that do something,
+### Comparison
+**Equal to**: `x == y`
+**Precise Equal to**: `x === y`
+**Weak Equal to**: `x ~= y`
+**Not equal to**: `x != y`
+**Precise Not equal to**: `x !== y`
+**Weak Not equal to**: `x ~!=`
+**Smaller then**: `x < y`
+**Greater then**: `x > y`
+**Smaller or Equal to**: `x <= y`
+**Greater or Equal to**: `x >= y`
+### Arithmetic
+**Add**: `x + y`
+**Subtract**: `x - y`
+**Multiply**: `x * y`
+**Divide**: `x / y`
+**Remainder**: `x % y`
+**Raised to the Power**: `x ** y` or `x^y`
+### Assignment
+**Assign**: `x = y`
+**Add to current value and Assign**: `x += y`
+**Subtract from current value and Assign**: `x -= y`
+**Multiply current value with and Assign**: `x *= y`
+**Divide current value with and Assign**: `x /= y`
+
 ## Conditions
 Conditions are used by some keywords, these need to be a `bool`. that means either `true` or `false`. When that condition is true the keyword runs, that means that that line runs.
 Here are some different keywords that use conditions:
 ### If/else
 `if` takes in a `bool` condition and runs the code in the line if that condition is `true`, `if` is structured like `if condition code`.
-```
+```gdscript
 if true print("Hello world!") # this will always print since the condition is a constant true
 ```
 
 here is a better use of the if statement
-```
+```gdscript
 if (input("what food do you like? ") == "hamburger") print("me too")
 ```
 in this example you see that I have the condition inside two parentheses. Unlike many languages, it's not necessary for the statement to work, but highly recommended if you want more readable code. since else its hard to distinguish between the condition and code.
 
 if you want to run multiple lines with the if keyword, you can surround the code in a `do` and `end`. think of them as opening and closing brackets, and for people who haven't used a language that uses them before, think of the `do` keyword as telling the `if` keyword to keep running code until the corresponding `end` keyword is reached.
-```
+```gdscript
 var x = int(input("number 1: "))
 var y = int(input("number 2: "))
 var opperation = input("opperation(+ or -): ")
@@ -171,12 +199,11 @@ end
 
 ## Wild-card things
 here is the rest that I couldn't find a good place to categorize them.
-
 ### Concatenation
 you can concatenate almost any two things of same type. Most commonly used for strings, but you can use it for anything like integers, arrays, or lists to name a few.
 What it means to "Concatenate" two values is that you put the second value at the end of the first.
 You concatenate with two dots in-between the two values to concatenate, when concatenating multiple values there is a left bias (that means first the two left-most values will concatenate, then that new value is "substituted" to be concatenated)
-```
+```gdscript
 print("foo".."bar") # output: foobar
 print(3..2) # output: 32
 print([3]..[2, 5]) # output: [3, 2, 5]
