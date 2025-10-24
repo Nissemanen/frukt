@@ -1,6 +1,11 @@
 # Introduction
-Frukt is a dynamically typed programming language inspired mainly from Lua, GdScript and Typescript.
+Frukt is a dynamically typed programming language inspired mainly from Lua, Gdscript and Typescript.
 
+Feel free to help if you have an idea of some addition or change 
+
+> [!NOTE]
+> currently this is just thoughts and ideas, this language doesn't actually have a working compiler.
+> in the future I have plans to make three versions, them being: Transpiled, Interpreted and finally JIT (just in time compilation) in that order
 # Features
 ## Comments
 There are two different ways to make comments. either single-line comments with a single hashtag like in python, or a comment block using two separate `#--`
@@ -21,11 +26,12 @@ its name cant explain it
 > [!NOTE]
 > as you see, unlike many other languages with comment blocks, these open and closing "symbols" are symmetrical. an example of a unsymmetrical comment block are `/*` and `*/`. you can think of a man opening a scroll
 > ![[medieval-man-holding-scroll-isolated-260nw-231944920.webp]]
+
 ## Types
 ### String
 a string is an array of characters, you can use them for easy debugging or showing information to someone using the script.
 
-strings are made with two quotation marks, both double and single works
+strings are made with two quotation marks (both double and single works)
 ```
 "this is a string!"
 'this too!'
@@ -44,9 +50,18 @@ var usr_age = int(input("how old are you?"))
 print(f"you are born year {2025 - age}!")
 ```
 ### Integer
-An integer is a binary 32 bit value. What that means is that it can store a whole number with the range of `2^32`, which is 4 294 967 296. though to get negative numbers one bit is used, that means you have a range from `2^31` to `-2^31`, that is 2 147 483 648 to -2 147 483 648. 
+An integer is a binary 32 bit value. What that means is that it can store a whole number with the range of `2^32`, which is 4 294 967 296. though to get negative numbers one bit is used, that means you have a range from `2^31` to `-2^31`, that is 2 147 483 648 to -2 147 483 648.
+Integers are used when you want to store any size whole number.
+### Float
+Float is short for "Floating point value". Unlike a integer (`int`), a float can have decimals, this is due to it storing numbers with a binary exponent. What that means is that you can store numbers with decimals via using a negative exponent (example: `2.53e-2 = 0.0253`).
+Floats are used when a number needs decimal precision
+### Long
+A long is like an integer but it can store massive numbers. `int`'s use 32 bits to store their data, and `long`'s use 64 bits, that's double the amount.
+```
+var my_large_number: long = 1e10 # "e" means exponent, so that is equal to `10^10` which is to large for a integer
+```
 ### Number
-a `num` is both an integer and float at the same time, it dynamically switches from one to the other when needed, that means a variable set to a number can have both integer or float value.
+a `num` is all number storing types at the same time, it dynamically switches from one to the other when needed, that means a variable set to a number can have integer, long or float value.
 the `num` type is fully compatible with integers and floats, that means you can set a number to a int value, and an int to a number value
 ```
 var number: num
@@ -58,11 +73,7 @@ var floating_point: float
 integer = number # same as `int(number)`
 floating_point = number # also works, same as `float(number)`
 ```
-### Long
-A long is like an integer but it can store massive numbers. `int`'s use 32 bits to store their data, and `long`'s use 64 bits, thats double the amount.
-```
-var my_large_number: long = 
-```
+
 ## Declarations 
 ### Variables
 To declare a variable you use the keyword `var`, then assign a value to it with the equals sign
@@ -131,7 +142,6 @@ end
 ## Conditions
 Conditions are used by some keywords, these need to be a `bool`. that means either `true` or `false`. When that condition is true the keyword runs, that means that that line runs.
 Here are some different keywords that use conditions:
-
 ### If/else
 `if` takes in a `bool` condition and runs the code in the line if that condition is `true`, `if` is structured like `if condition code`.
 ```
