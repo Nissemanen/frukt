@@ -49,6 +49,8 @@ prtint(f"{string}bar") # output: foobar
 var usr_age = int(input("how old are you?"))
 print(f"you are born year {2025 - age}!")
 ```
+#### Regular Expression (RegEx)
+Regular Expression (RegEx) is a way to search a string for patterns and
 ### Integer
 An integer is a binary 32 bit value. What that means is that it can store a whole number with the range of `2^32`, which is 4 294 967 296. though to get negative numbers one bit is used, that means you have a range from `2^31` to `-2^31`, that is 2 147 483 648 to -2 147 483 648.
 Integers are used when you want to store any size whole number.
@@ -142,24 +144,32 @@ end
 ## Operators
 an operator is a symbol, or a group of symbols that do something,
 ### Comparison
-**Equal to**: `x == y`
-**Precise Equal to**: `x === y`
-**Weak Equal to**: `x ~= y`
-**Not equal to**: `x != y`
-**Precise Not equal to**: `x !== y`
-**Weak Not equal to**: `x ~!=`
-**Smaller then**: `x < y`
-**Greater then**: `x > y`
-**Smaller or Equal to**: `x <= y`
-**Greater or Equal to**: `x >= y`
+a Comparison operator checks if the two values on each side and returns a bool
+here are the comparison operators and what they do:
+```
+x == y # Equality comparison. Checks if x is Equal to y, returns true if it is.
+x === y # Percise Equality comparison. Checks if x is Exactly y, that means they need to have all exact same values, includes name.
+x ~= y # Weak Equality comparison. Checks if x is almost Equal to y, ignores decimal number percition.
+x != y # Not Equal comparison. Checks if x is Not Equal to y, returns reversed from normal Equality comparison
+x !== y # Percise Not Equal comparison. Checks if x is Not Exactly y. returns reversed from normal Percise Equality comparison
+x ~!= y # Weak Not Equal comparison. Checks if x is Almost Not Equal to y. returns reversed from normal Weak Equality comparison.
+x < y # Smaller then comparison. Checks if x is smaller then y, returns true if so.
+x > y # Greater then comparison. Checks if x is greater then y, returns true if so.
+x <= y # Smaller or Equal to comparison. Checks if x is smaller or equal to y. returns true if so.
+x >= y # Greater or Equal to comparison. Checks if x is greater or equal to y. returns true if so.
+```
 ### Arithmetic
-**Add**: `x + y`
-**Subtract**: `x - y`
-**Multiply**: `x * y`
-**Divide**: `x / y`
-**Remainder**: `x % y`
-**Raised to the Power**: `x ** y` or `x^y`
+Arithmetic operators do just that, arithmetic.
+```
+x + y # Addition
+x - y # Subtraction
+x * y # Multiplication
+x / y # Division
+x % y # Modulus
+x ** y # Raised to the Power
+```
 ### Assignment
+Assignment operators are operators that set one value (the left most) to another value (the right most). this is used for variables
 **Assign**: `x = y`
 **Add to current value and Assign**: `x += y`
 **Subtract from current value and Assign**: `x -= y`

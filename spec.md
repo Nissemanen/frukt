@@ -30,15 +30,19 @@ Statements are normally separated by either:
 - a line terminator.
 
 ### **2.3** Tokens
-for some of the following explanations regular expression (regex) will be used to clearly explain how things are defined.
+> [!NOTE]
+> regular expression (regex) will be used in some places to make it clearer how something is defined
+> regex will be defined with a code block starting and ending with a forwards slash, e.g. `/this is [Rr]eg([Ee]x|ular [Ee]xpresion)/`
 
-**Identifier**: /\[A-Za-z_]\[A-Za-z0-9_]\*/
+**Identifier**: `[A-Za-z_][A-Za-z0-9_]*`
 **Keywords**:
-- **Conditional**: `if`, `else`,
-- **Loops**: `while`, `for`,
+- **Conditional**: `if`, `else`, `try`, `except`, `match`
+- **Loops**: `while`, `for`
 - **Flow Control**: `break`, `continue`, `return`
-- **Declaration**: `var`, `const`, `func`, `class`,
+- **Declaration**: `var`, `const`, `func`, `class`
 - **Literals**: `true`, `false`, `none`
-- **Other**: `try`, `except`
+- **Code Blocks**: `do`, `end`
+**Operators**:
+- **Assignment**: `=`, 
 
 that's it for now. I don't really know how to structure specifications in a good way so I just went as simple but detailed explanatory as possible
