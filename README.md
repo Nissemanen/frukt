@@ -169,26 +169,31 @@ x % y # Modulus
 x ** y # Raised to the Power
 ```
 ### Assignment
-Assignment operators are operators that set one value (the left most) to another value (the right most). this is used for variables
-**Assign**: `x = y`
-**Add to current value and Assign**: `x += y`
-**Subtract from current value and Assign**: `x -= y`
-**Multiply current value with and Assign**: `x *= y`
-**Divide current value with and Assign**: `x /= y`
-
-## Conditions
-Conditions are used by some keywords, these need to be a `bool`. that means either `true` or `false`. When that condition is true the keyword runs, that means that that line runs.
-Here are some different keywords that use conditions:
-### If/else
-`if` takes in a `bool` condition and runs the code in the line if that condition is `true`, `if` is structured like `if condition code`.
+Assignment operators are operators that set one value (the left most) to another value (the right most).
+```
+x = y # Assign
+x += y # Increase with
+x -= y # Reduce by
+x *= y # Multiply with
+x /= y # Divide by
+x **= y # To the Power of
+x %= y # Modulus by
+```
+## Conditional
+Sometimes you want to only run some code depending on some condition. Conditions are a `bool` value used in different ways,
+### if/else
+`if` is a keyword consisting of two parts, the condition and the code. `if` is structured like `if {condition} {code}` (the squiggly braces are not used in real code), and it runs the `{code}` if the `{condition}` is `true`.
+Example:
 ```gdscript
-if true print("Hello world!") # this will always print since the condition is a constant true
+if true print("Hello World!")
 ```
 
+As you see, all you really need is the condition and statement/code. This example isn't so usefull, since the `{condition}` is set to the constant `true`, that means the code after `{condition}` will always run, there is no need for that if statement.
 here is a better use of the if statement
 ```gdscript
 if (input("what food do you like? ") == "hamburger") print("me too")
 ```
+
 in this example you see that I have the condition inside two parentheses. Unlike many languages, it's not necessary for the statement to work, but highly recommended if you want more readable code. since else its hard to distinguish between the condition and code.
 
 if you want to run multiple lines with the if keyword, you can surround the code in a `do` and `end`. think of them as opening and closing brackets, and for people who haven't used a language that uses them before, think of the `do` keyword as telling the `if` keyword to keep running code until the corresponding `end` keyword is reached.
