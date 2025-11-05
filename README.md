@@ -9,7 +9,7 @@ Feel free to help if you have an idea of some addition or change
 # Features
 ## Comments
 There are two different ways to make comments. either single-line comments with a single hashtag like in python, or a comment block using two separate `#--`
-```gdscript
+```
 # this is a single line comment
 #--
 these are all lines inside
@@ -176,11 +176,11 @@ x += y # Increase with
 x -= y # Reduce by
 x *= y # Multiply with
 x /= y # Divide by
-x **= y # To the Power of
+x **= y # with the Power of
 x %= y # Modulus by
 ```
 ## Conditional
-Sometimes you want to only run some code depending on some condition. Conditions are a `bool` value used in different ways,
+Sometimes you want to only run some code depending on some condition. Conditions are a `bool` value used in different ways
 ### if/else
 `if` is a keyword consisting of two parts, the condition and the code. `if` is structured like `if {condition} {code}` (the squiggly braces are not used in real code), and it runs the `{code}` if the `{condition}` is `true`.
 Example:
@@ -188,7 +188,7 @@ Example:
 if true print("Hello World!")
 ```
 
-As you see, all you really need is the condition and statement/code. This example isn't so usefull, since the `{condition}` is set to the constant `true`, that means the code after `{condition}` will always run, there is no need for that if statement.
+As you see, all you really need is the condition and statement/code. This example isn't so useful, since the `{condition}` is set to the constant `true`, that means the code after `{condition}` will always run, there is no need for that if statement.
 here is a better use of the if statement
 ```gdscript
 if (input("what food do you like? ") == "hamburger") print("me too")
@@ -211,9 +211,15 @@ if (opperation == "-") do
 	print(f"dif is: {x - y}")
 end
 ```
-
-## Wild-card things
-here is the rest that I couldn't find a good place to categorize them.
+## Loops
+Sometimes you might want to do something over a bunch of revisions, doing the same thing over and over. That's where loops are useful, they let you repeat one thing over and over until a [condition](#Conditional) is met.
+There are different types of loops, but the two ways to loop with keywords are
+### While loop
+things things things...
+### For loop
+other things
+## Built in
+here are some of the built in functions and 
 ### Concatenation
 you can concatenate almost any two things of same type. Most commonly used for strings, but you can use it for anything like integers, arrays, or lists to name a few.
 What it means to "Concatenate" two values is that you put the second value at the end of the first.
