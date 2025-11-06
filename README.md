@@ -179,9 +179,10 @@ x /= y # Divide by
 x **= y # with the Power of
 x %= y # Modulus by
 ```
-## Conditional
+## Control flow
+### Conditional
 Sometimes you want to only run some code depending on some condition. Conditions are a `bool` value used in different ways
-### if/else
+#### if/else
 `if` is a keyword consisting of two parts, the condition and the code. `if` is structured like `if {condition} {code}` (the squiggly braces are not used in real code), and it runs the `{code}` if the `{condition}` is `true`.
 Example:
 ```gdscript
@@ -213,9 +214,8 @@ end
 ```
 ## Loops
 Sometimes you might want to do something over a bunch of revisions, doing the same thing over and over. That's where loops are useful, they let you repeat one thing over and over until a [condition](#Conditional) is met.
-There are different types of loops, but the two ways to loop with keywords are
 ### While loop
-things things things...
+A while loop runs the designated code whilst the condition
 ### For loop
 other things
 ## Built in
