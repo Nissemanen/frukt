@@ -212,12 +212,23 @@ if (opperation == "-") do
 	print(f"dif is: {x - y}")
 end
 ```
-## Loops
+### Loops
 Sometimes you might want to do something over a bunch of revisions, doing the same thing over and over. That's where loops are useful, they let you repeat one thing over and over until a [condition](#Conditional) is met.
-### While loop
-A while loop runs the designated code whilst the condition
-### For loop
-other things
+#### While loop
+A while loop runs the designated code whilst the condition is true, its structured like an if statement, like this `while {condition} {code}`, and for each repetition of the code it checks the condition, looking if it still is `true`.
+```lua
+while true print("hello world!")
+```
+this will print `hello world!` for infinity until the program is terminated.
+#### For loop
+A for loop is used to iterate through some elements in a `dict`/`array`/`list`. It's structured like `for {elements} {code}`. it works via getting the `__iter()` function of the `{elements}`, all built in types has this function and it returns either an `array` or `dict` of values (and keys in the case of a `dict`). it will not give any form of way of knowing what iteration its currently on, nor what value the current iteration has, that makes it good for loops with specific iterations, where the value isn't needed:
+```lua
+for range(10) do
+	print("this will print 10 times!")
+end
+```
+
+if you want to get the current value, you can use the `as` keyword,
 ## Built in
 here are some of the built in functions and 
 ### Concatenation
@@ -253,7 +264,7 @@ var a = "hello world!"
 use the exact same resources.
 
 if a variable never get a value it will be replaced with `none`. That means...
-```gdscript
+```lua
 var a
 
 if a do
@@ -261,7 +272,7 @@ if a do
 end
 ```
 and...
-```gdscript
+```lua
 if none do
 	print(none)
 end
@@ -269,7 +280,7 @@ end
 also use the same resources
 
 but, if a variable isn't declared with a value, and gets one later in the script, it's value will be set to `none`, instead of being replaced. That means...
-```gdscript
+```lua
 var a
 
 if a do
@@ -279,7 +290,7 @@ else do
 end
 ```
 and...
-```gdscript
+```lua
 var a = none
 
 if a do
@@ -288,7 +299,16 @@ else do
 	a = "hello world!"
 end
 ```
-
+## Variable Binding with `as`
+The `as` keyword captures values from expressions into variables
+### In for loops
+`as` is really useful in for loops, since it can get the current iterations value and put it in a useable variable, examples:
+```lua
+for range(10) as i print(i)
+for my_dict as (key, value) print(f"{key}: {value}")
+```
+it this code, the first for loop will loop 10 times and each time the `i` variable will be set to the new value in the given list,
+and as for the dict, I don't know how to actually do it yet, but right now ill just say that for more then one variable you have to put them in parenthesis.
 # Faq (Frequently Asked Questions)
 **What is "FooBar"?**
 "foobar" is nothing but test names, they are frequently used in programming languages to show how things work and how to do stuff.
