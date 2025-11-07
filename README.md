@@ -44,7 +44,7 @@ Interpolation is done via adding an `f` before a string, then using opening/clos
 print(f"1 + 2 = {1 + 2}") # output: 1 + 2 = 3
 
 var string = "foo"
-prtint(f"{string}bar") # output: foobar
+print(f"{string}bar") # output: foobar
 
 var usr_age = int(input("how old are you?"))
 print(f"you are born year {2025 - age}!")
@@ -99,14 +99,14 @@ const constant_var = "This wont Change!"
 ### Functions
 to define functions, use the `func` keyword
 
-```gdscript
+```lua
 func greet(name) do
 	print(f"Hello {name}!")
 end
 ```
 
 you can pass arguments to a function, do this via adding the wished arguments inside the parenthesis, then when the function is ran you pas through the argument inside the parenthesis
-```gdscript
+```lua
 func greet(name) do
 	print("Hello" + name + "!")
 end
@@ -142,11 +142,12 @@ end
 ```
 
 ## Operators
-an operator is a symbol, or a group of symbols that do something,
+An operator is one or more symbols (e.g. `#`, `*`, `%`, etc...) that run a method.
+Under the hood, all operators run a method from the left operand, with the right as the argument to the method
 ### Comparison
 a Comparison operator checks if the two values on each side and returns a bool
 here are the comparison operators and what they do:
-```
+```python
 x == y # Equality comparison. Checks if x is Equal to y, returns true if it is.
 x === y # Percise Equality comparison. Checks if x is Exactly y, that means they need to have all exact same values, includes name.
 x ~= y # Weak Equality comparison. Checks if x is almost Equal to y, ignores decimal number percition.
@@ -160,7 +161,7 @@ x >= y # Greater or Equal to comparison. Checks if x is greater or equal to y. r
 ```
 ### Arithmetic
 Arithmetic operators do just that, arithmetic.
-```
+```python
 x + y # Addition
 x - y # Subtraction
 x * y # Multiplication
@@ -170,7 +171,7 @@ x ** y # Raised to the Power
 ```
 ### Assignment
 Assignment operators are operators that set one value (the left most) to another value (the right most).
-```
+```python
 x = y # Assign
 x += y # Increase with
 x -= y # Reduce by
@@ -179,26 +180,41 @@ x /= y # Divide by
 x **= y # with the Power of
 x %= y # Modulus by
 ```
+### Concatenation
+The concatenation operator (`..`) joins two values of same type into one.
+```python
+print("foo".."bar") #output: foobar
+print(3 .. 4) #output: 34
+print([3]..[2, 5]) #output: [3, 2, 5]
+```
+
+Under the hood, `..` calls the `__concat()` method left of the operand, with the right as the input,
+meaning you can define custom concatenation for your own classes.
+For all built in types, concatenation will always return the same type as the inputs.
+
+> [!ATTENTION]
+> for numbers a space is currently needed. This is because in lexing (turning code to tokens), it might mistake a concatenation of numbers as a float value, resulting in an error.
+> Currently i don't know if i will change this later or keep it as is, since (according to me its more readable with spaces)
 ## Control flow
 ### Conditional
 Sometimes you want to only run some code depending on some condition. Conditions are a `bool` value used in different ways
 #### if/else
 `if` is a keyword consisting of two parts, the condition and the code. `if` is structured like `if {condition} {code}` (the squiggly braces are not used in real code), and it runs the `{code}` if the `{condition}` is `true`.
-Example:
-```gdscript
+Code example:
+```lua
 if true print("Hello World!")
 ```
 
 As you see, all you really need is the condition and statement/code. This example isn't so useful, since the `{condition}` is set to the constant `true`, that means the code after `{condition}` will always run, there is no need for that if statement.
 here is a better use of the if statement
-```gdscript
+```python
 if (input("what food do you like? ") == "hamburger") print("me too")
 ```
 
 in this example you see that I have the condition inside two parentheses. Unlike many languages, it's not necessary for the statement to work, but highly recommended if you want more readable code. since else its hard to distinguish between the condition and code.
 
 if you want to run multiple lines with the if keyword, you can surround the code in a `do` and `end`. think of them as opening and closing brackets, and for people who haven't used a language that uses them before, think of the `do` keyword as telling the `if` keyword to keep running code until the corresponding `end` keyword is reached.
-```gdscript
+```lua
 var x = int(input("number 1: "))
 var y = int(input("number 2: "))
 var opperation = input("opperation(+ or -): ")
@@ -212,6 +228,20 @@ if (opperation == "-") do
 	print(f"dif is: {x - y}")
 end
 ```
+#### try/except
+The `try` and `except` are usefull when running code where errors might happen, and you don't want the code to stop because of it.
+The `try` keyword is not structured exactly like the other conditionals. Instead of having a condition and code field, it only has a code field, so its structured like `try {code}`.
+The `except` keyword is structured like normal conditional though, it is like 
+Code example:
+```python
+try print("hello world!") #output: hello world!
+
+try do raise TypeError("something went wrong!") end
+except print("error alert!") #output: error alert!
+print("no exit") #(this will print, even if there is a raise right above) output: no exit
+```
+
+if you want the error that occurred you can use [[#Variable Binding with `as`]], it can not be used on the `try` keyword, but for the `except` keyword it can
 ### Loops
 Sometimes you might want to do something over a bunch of revisions, doing the same thing over and over. That's where loops are useful, they let you repeat one thing over and over until a [condition](#Conditional) is met.
 #### While loop
@@ -228,21 +258,12 @@ for range(10) do
 end
 ```
 
-if you want to get the current value, you can use the `as` keyword,
-## Built in
-here are some of the built in functions and 
-### Concatenation
-you can concatenate almost any two things of same type. Most commonly used for strings, but you can use it for anything like integers, arrays, or lists to name a few.
-What it means to "Concatenate" two values is that you put the second value at the end of the first.
-You concatenate with two dots in-between the two values to concatenate, when concatenating multiple values there is a left bias (that means first the two left-most values will concatenate, then that new value is "substituted" to be concatenated)
-```gdscript
-print("foo".."bar") # output: foobar
-print(3..2) # output: 32
-print([3]..[2, 5]) # output: [3, 2, 5]
+if you want to get the current value, you can use the `as` keyword, it puts the current value in the specified variable. here is more information about [[#Variable Binding with `as`]]
+```lua
+for range(10) as i do
+	print(i)
+end
 ```
-
-the `..` just run the `__concat()` function of the first value, that means you can add your own concatenate method to your classes.
-Every time you concatenate built-in types it always returns with the same type.
 
 
 ---
@@ -303,15 +324,37 @@ end
 The `as` keyword captures values from expressions into variables
 ### In for loops
 `as` is really useful in for loops, since it can get the current iterations value and put it in a useable variable, examples:
-```lua
+```python
 for range(10) as i print(i)
 for my_dict as (key, value) print(f"{key}: {value}")
 ```
-it this code, the first for loop will loop 10 times and each time the `i` variable will be set to the new value in the given list,
-and as for the dict, I don't know how to actually do it yet, but right now ill just say that for more then one variable you have to put them in parenthesis.
-# Faq (Frequently Asked Questions)
-**What is "FooBar"?**
-"foobar" is nothing but test names, they are frequently used in programming languages to show how things work and how to do stuff.
+In this code, the first `for` loop will loop 10 times and each time the `i` variable will be set to the new value in the given list,
+and as for the dict, I don't know how to actually do it yet, but right now I'll just say that for more then one variable you have to put them in parenthesis.
+### In try/except
+it can be used to get the error that occurred in the `except` part, 
+or in the case of it not getting an error, you can the the returned value of the function/code ran.
+Examples:
+```python
+func test_code() do return "hello from function! no problem here" end
+
+try test_code() as result
+print(result) #output: hello from function! no problem here
+
+try do
+	var a = 2
+	var b = 5
+	var c = 7
+	return a + b + c
+end as result
+print(result) # 5
+
+try do #malicious code
+	raise ValueError("this is an error")
+end
+except as error do
+	print(f"got this error: {error}") #output: got this error: ValueError: this is an error
+end
+```
 
 # Dictionary of all keywords
 `do`/`end`
