@@ -50,7 +50,18 @@ var usr_age = int(input("how old are you?"))
 print(f"you are born year {2025 - age}!")
 ```
 #### Regular Expression (RegEx)
-Regular Expression (RegEx) is a way to search a string for patterns and
+Regular Expression (RegEx) is a way to search a string for different patterns. There specific RegEx patterns are made with two separate "\`", like this:
+```gdscript
+var regex_pattern: REPattern = `hello`
+```
+then you can match that pattern to another string like:
+```gdscript
+var matches: <dict> = regex_pattern.match("hello world!")
+```
+that will return, as hinted at, an array of `dict`, where each dict is its own match, containing information like position, match number or the match itself.
+```python
+print(matches) #output: <>
+```
 ### Integer
 An integer is a binary 32 bit value. What that means is that it can store a whole number with the range of `2^32`, which is 4 294 967 296. though to get negative numbers one bit is used, that means you have a range from `2^31` to `-2^31`, that is 2 147 483 648 to -2 147 483 648.
 Integers are used when you want to store any size whole number.
@@ -75,6 +86,9 @@ var floating_point: float
 integer = number # same as `int(number)`
 floating_point = number # also works, same as `float(number)`
 ```
+### Array
+An `array` is like a sorted collection of items. Arrays are type specific, and can only hold one type of items. That means you can have an array of integers, and that will be the only acceptable type in that array.
+Arrays are declared with the desired type inside a greater/equal symbol, like `<int>` or `<str>`as
 
 ## Declarations 
 ### Variables
@@ -181,20 +195,24 @@ x **= y # with the Power of
 x %= y # Modulus by
 ```
 ### Concatenation
-The concatenation operator (`..`) joins two values of same type into one.
+The concatenation operator (`++`) joins two values of same type into one.
 ```python
-print("foo".."bar") #output: foobar
-print(3 .. 4) #output: 34
-print([3]..[2, 5]) #output: [3, 2, 5]
+print("foo"++"bar") #output: foobar
+print(31++41) #output: 3141
+print(3.4++1.1) #output: 31.41
+print([3]++[2, 5]) #output: [3, 2, 5]
 ```
 
-Under the hood, `..` calls the `__concat()` method left of the operand, with the right as the input,
+Under the hood, `++` calls the `__concat()` method left of the operand, with the right as the input,
 meaning you can define custom concatenation for your own classes.
 For all built in types, concatenation will always return the same type as the inputs.
 
-> [!ATTENTION]
-> for numbers a space is currently needed. This is because in lexing (turning code to tokens), it might mistake a concatenation of numbers as a float value, resulting in an error.
-> Currently i don't know if i will change this later or keep it as is, since (according to me its more readable with spaces)
+> [!NOTE]
+> Currently concatenation between two floats is a little weird and will either get removed or changed in the future,
+> right now what it does is it takes the whole numbers and concatenates them and then takes the decimals and concatenates them.
+> I.e. It works like the decimal point is just a separator between two different integers that get concatenated.
+> 
+> Any and all recommendations surrounding this are more than welcome!
 ## Control flow
 ### Conditional
 Sometimes you want to only run some code depending on some condition. Conditions are a `bool` value used in different ways
