@@ -29,7 +29,7 @@ its name cant explain it
 > ![image](medieval-man-holding-scroll-isolated-260nw-231944920.webp)
 ## Types
 ### String
-a string is an array of characters, you can use them for easy debugging or showing information to someone using the script.
+a string is an list of characters, you can use them for easy debugging or showing information to someone using the script.
 
 strings are made with two quotation marks (both double and single works)
 ```gdscript
@@ -56,11 +56,11 @@ var regex_pattern: REPattern = `hello`
 ```
 then you can match that pattern to another string like:
 ```gdscript
-var matches: <dict> = regex_pattern.match("hello world!")
+var matches: [dict] = regex_pattern.match("hello world!")
 ```
-that will return, as hinted at, an array of `dict`, where each dict is its own match, containing information like position, match number or the match itself.
+that will return, as hinted at, a list of `dict`, where each dict is its own match, containing information like position, match number or the match itself.
 ```python
-print(matches) #output: <>
+print(matches) #output: []
 ```
 ### Integer
 An integer is a binary 32 bit value. What that means is that it can store a whole number with the range of `2^32`, which is 4 294 967 296. though to get negative numbers one bit is used, that means you have a range from `2^31` to `-2^31`, that is 2 147 483 648 to -2 147 483 648.
@@ -78,17 +78,16 @@ a `num` is all number storing types at the same time, it dynamically switches fr
 the `num` type is fully compatible with integers and floats, that means you can set a number to a int value, and an int to a number value
 ```gdscript
 var number: num
-number = 1.5 # works
-number = 1 # also works
+number = 1 # works
+number = 1.5 # also works
 
 var integer: int
 var floating_point: float
 integer = number # same as `int(number)`
 floating_point = number # also works, same as `float(number)`
 ```
-### Array
-An `array` is like a sorted collection of items. Arrays are type specific, and can only hold one type of items. That means you can have an array of integers, and that will be the only acceptable type in that array.
-Arrays are declared with the desired type inside a greater/equal symbol, like `<int>` or `<str>`as
+### List
+A `list` is an iterable type containing multiple values without specified keys, only identifier for each value is its index
 
 ## Declarations 
 ### Variables
@@ -269,7 +268,7 @@ while true print("hello world!")
 ```
 this will print `hello world!` for infinity until the program is terminated.
 #### For loop
-A for loop is used to iterate through some elements in a `dict`/`array`/`list`. It's structured like `for {elements} {code}`. it works via getting the `__iter()` function of the `{elements}`, all built in types has this function and it returns either an `array` or `dict` of values (and keys in the case of a `dict`). it will not give any form of way of knowing what iteration its currently on, nor what value the current iteration has, that makes it good for loops with specific iterations, where the value isn't needed:
+A for loop is used to iterate through some elements in a `dict`/`list`. It's structured like `for {elements} {code}`. it works via getting the `__iter()` function of the `{elements}`, all built in types has this function and they always return a `list` or `dict` containing a value (and in the case of a dict there is a key linking to that value). it will not give any form of way of knowing what iteration its currently on, nor what value the current iteration has, that makes it good for loops with specific iterations, where the value isn't needed:
 ```lua
 for range(10) do
 	print("this will print 10 times!")

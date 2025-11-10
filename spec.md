@@ -46,5 +46,6 @@ Statements are normally separated by either:
 - **Assignment**: `=`, `-=`, `+=`, `*=`, `/=`, `**=`, `%=`
 - **Arithmetic**: `+`, `-`, `/`, `*`, `**`, `%`
 - **Comparison**: `==`, `===`, `~=`, `!=`, `!==`, `~!=`, `<`, `>`, `<=`, `>=`
+- **Concatenation**: `++`
 
 that's it for now. I don't really know how to structure specifications in a good way so I just went as simple but detailed explanatory as possible
