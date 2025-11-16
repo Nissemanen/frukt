@@ -32,8 +32,8 @@ its name cant explain it
 a string is an list of characters, you can use them for easy debugging or showing information to someone using the script.
 
 strings are made with two quotation marks (both double and single works)
-```gdscript
-"this is a string!"
+```python
+"his is a string!"
 'this too!'
 ```
 #### Interpolation
