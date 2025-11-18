@@ -34,7 +34,7 @@ its name cant explain it
 ### Character
 a `char` is a single UTF-8 encoded letter or symbol. It's better to use than a string in the case you only need one character.
 ### String
-A string is a list of characters, you can use them for easy debugging or showing information to someone using the script.
+A `str` is a list of characters, you can use them for easy debugging or showing information to someone using the script.
 
 strings are made with two quotation marks (both double and single works)
 ```python
@@ -68,10 +68,10 @@ that will return, as hinted at, a list of `dict`, where each dict is its own mat
 print(matches) #output: []
 ```
 ### Integer
-An `int` is a 32 bit signed value. What that means is that it can store a whole number with the range from `-2^31` to `2^31`, that makes a range that is 4 294 967 296 large, that is 2 147 483 648 to -2 147 483 648.
+An `int` is a 32 bit signed number. What that means is that it can store a whole number with the range from `-2^31` to `2^31`, that makes a range that is 4 294 967 296 large, that is 2 147 483 648 to -2 147 483 648.
 Integers are used when you want to store any size whole number.
 ### Float
-A `float` is a Floating point value using the IEEE-754 standard. Float is short for "Floating point value". Unlike a integer (`int`), a float can have decimals, this is due to it storing numbers with a binary exponent. What that means is that you can store numbers with decimals via using a negative exponent (example: `2.53e-2 = 0.0253`).
+A `float` is a 32 bit signed floating point number using the IEEE-754 standard. Float is short for "Floating point value". Unlike a integer (`int`), a float can have decimals, this is due to it storing numbers with a binary exponent. What that means is that you can store numbers with decimals via using a negative exponent (example: `2.53e-2 = 0.0253`).
 Floats are used when a number needs decimal precision
 ### Long
 A `long` is a 64 bit signed value. This means it can store numbers on a range from `-2^31` to `2^31`.

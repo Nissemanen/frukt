@@ -1,6 +1,13 @@
 var fizz = 3
 var buzz = 5
+var iters = 10
 
-for range(10) as i do
-	
+for range(iters) as i do # prints the first 10 numbers with fizz/buzz corectly plotted
+	var out = ""
+
+	if (i % fizz == 0) out ++= "fizz"
+	if (i % buzz == 0) out ++= "buzz"
+	if (!out) out = str(i)
+
+	print(out)
 end
