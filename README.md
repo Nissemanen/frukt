@@ -5,7 +5,7 @@ Feel free to help if you have an idea of some addition or change
 
 > [!NOTE]
 > currently this is just thoughts and ideas, this language doesn't actually have a working compiler.
-> in the future I have plans to make three versions, them being: Transpiled, Interpreted and finally JIT (just in time compilation) in that order
+> in the future I have plans to make three versions, them being: Transpiled, Interpreted and, finally JIT (just in time compilation) in that order
 # Features
 ## Comments
 There are two different ways to make comments. either single-line comments with a single hashtag like in python, or a comment block using two separate `#--`
@@ -28,8 +28,10 @@ its name cant explain it
 >
 > ![image](medieval-man-holding-scroll-isolated-260nw-231944920.webp)
 ## Types
+### Character
+a `char` is a single UTF-8 encoded letter or symbol. It's better to use than a string in the case you only need one character.
 ### String
-a string is an list of characters, you can use them for easy debugging or showing information to someone using the script.
+A string is a list of characters, you can use them for easy debugging or showing information to someone using the script.
 
 strings are made with two quotation marks (both double and single works)
 ```gdscript
@@ -63,13 +65,13 @@ that will return, as hinted at, a list of `dict`, where each dict is its own mat
 print(matches) #output: []
 ```
 ### Integer
-An integer is a binary 32 bit value. What that means is that it can store a whole number with the range of `2^32`, which is 4 294 967 296. though to get negative numbers one bit is used, that means you have a range from `2^31` to `-2^31`, that is 2 147 483 648 to -2 147 483 648.
+An `int` is a 32 bit signed value. What that means is that it can store a whole number with the range from `-2^31` to `2^31`, that makes a range that is 4 294 967 296 large, that is 2 147 483 648 to -2 147 483 648.
 Integers are used when you want to store any size whole number.
 ### Float
-Float is short for "Floating point value". Unlike a integer (`int`), a float can have decimals, this is due to it storing numbers with a binary exponent. What that means is that you can store numbers with decimals via using a negative exponent (example: `2.53e-2 = 0.0253`).
+A `float` is a Floating point value using the IEEE-754 standard. Float is short for "Floating point value". Unlike a integer (`int`), a float can have decimals, this is due to it storing numbers with a binary exponent. What that means is that you can store numbers with decimals via using a negative exponent (example: `2.53e-2 = 0.0253`).
 Floats are used when a number needs decimal precision
 ### Long
-A long is like an integer but it can store massive numbers. `int`'s use 32 bits to store their data, and `long`'s use 64 bits, that's double the amount.
+A `long` is a 64 bit signed value. This means it can store numbers on a range from `-2^31` to `2^31`.
 ```gdscrip
 var my_large_number: long = 1e10 # "e" means exponent, so that is equal to `10^10` which is to large for a integer
 ```

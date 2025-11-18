@@ -35,6 +35,7 @@ Statements are normally separated by either:
 > regex will be defined with a code block starting and ending with a forwards slash, e.g. `/this is [Rr]eg([Ee]x|ular [Ee]xpresion)/`
 
 **Identifier**: `/[A-Za-z_][A-Za-z0-9_]*/`
+**Number**: `/[0-9]+(\.[0-9]+)?/`
 **Keywords**:
 - **Conditional**: `if`, `else`, `try`, `except`, `match`
 - **Loops**: `while`, `for`
