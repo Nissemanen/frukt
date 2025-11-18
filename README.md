@@ -6,6 +6,9 @@ Feel free to help if you have an idea of some addition or change
 > [!NOTE]
 > currently this is just thoughts and ideas, this language doesn't actually have a working compiler.
 > in the future I have plans to make three versions, them being: Transpiled, Interpreted and, finally JIT (just in time compilation) in that order
+
+> [!GOOD TO KNOW]
+> All Keywords in Frukt take multiple or none arguments separated by the natural breaks in expression precedence, rather than explicit separators like commas. Arguments end wherever the expression reaches its 'top level' - where no operators or structures are still pending.
 # Features
 ## Comments
 There are two different ways to make comments. either single-line comments with a single hashtag like in python, or a comment block using two separate `#--`
@@ -194,6 +197,7 @@ x *= y # Multiply with
 x /= y # Divide by
 x **= y # with the Power of
 x %= y # Modulus by
+x ++= y # Concatenate with
 ```
 ### Concatenation
 The concatenation operator (`++`) joins two values of same type into one.
@@ -247,6 +251,8 @@ if (opperation == "-") do
 	print(f"dif is: {x - y}")
 end
 ```
+
+then there is the `else` keyword that is always and only used after the code of an if statement, that else
 #### try/except
 The `try` and `except` are usefull when running code where errors might happen, and you don't want the code to stop because of it.
 The `try` keyword is not structured exactly like the other conditionals. Instead of having a condition and code field, it only has a code field, so its structured like `try {code}`.
