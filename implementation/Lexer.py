@@ -30,6 +30,7 @@ class Lexer:
 
 	def skip_whitespace(self):
 		while self.current_char is not None and self.current_char.isspace():
+			print(f"{self.pos}:{repr(self.current_char)} is space or not none")
 			self.advance()
 
 	def get_current_token(self) -> Token | err | None:
@@ -64,9 +65,10 @@ class Lexer:
 				while self.current_char is not None and self.current_char.isdigit():
 					self.advance()
 				decimal_value = self.source[decimal_start:self.pos]
+				if not decimal_value.isdigit():
+					return err.SYNTAX_ERROR
+				
 				value += '.' + decimal_value
-			else:
-				return err.SYNTAX_ERROR
 			
 			return Token('NUMBER', value)
 		
@@ -96,7 +98,9 @@ class Lexer:
 			self.advance() 
 			return Token('STRONG_COMP', '===') # else we know its a strong comparison
 		
-		return err.UNKNOWN_TOKEN
+		unkown_char = self.current_char
+		self.advance()
+		return Token('UNKNOWN', unkown_char)
 
 
 	def lex(self) -> err|list[err]:
@@ -106,11 +110,37 @@ class Lexer:
 			result = self.get_current_token()
 
 			if type(result) == Token:
+				print(f"result: {result.type} : {repr(result.value)}")
 				self.tokens.append(result)
-			else:
+			elif type(result) == err:
+				print(f"appending '{result.name}' to errors")
 				Errors.append(result)
 
 		if Errors:
 			return Errors
 		
 		return err.OK
+
+
+if __name__ == "__main__":
+	with open("./examples/fizzbuzz.frukt", "r") as f:
+		source = f.read()
+
+	print(f"source:\n{source}")
+
+	lexer = Lexer(source)
+	error = lexer.lex()
+
+	print(f"error: {error}")
+
+	if error != err.OK:
+		if type(error) == list:
+			print(f"Errors happened:")
+			print([f"{single_err}\n" for single_err in error])
+		
+		else:
+			print(f"Error happened: {err.name}")
+	
+	else:
+		for token in lexer.tokens:
+			print(f"{token.type}:{' '*(20-len(token.type))}{token.value}")
