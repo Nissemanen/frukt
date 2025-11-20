@@ -1,4 +1,5 @@
 from Errors import err
+import json
 
 class Token:
 	def __init__(self, type_, value) -> None:
@@ -30,7 +31,6 @@ class Lexer:
 
 	def skip_whitespace(self):
 		while self.current_char is not None and self.current_char.isspace():
-			print(f"{self.pos}:{repr(self.current_char)} is space or not none")
 			self.advance()
 
 	def get_current_token(self) -> Token | err | None:
@@ -98,6 +98,14 @@ class Lexer:
 			self.advance() 
 			return Token('STRONG_COMP', '===') # else we know its a strong comparison
 		
+		if self.current_char == '(':
+			self.advance()
+			return Token('LPARENT', '(')
+		
+		if self.current_char == ')':
+			self.advance()
+			return Token('RPARENT', ')')
+
 		unkown_char = self.current_char
 		self.advance()
 		return Token('UNKNOWN', unkown_char)
@@ -110,7 +118,6 @@ class Lexer:
 			result = self.get_current_token()
 
 			if type(result) == Token:
-				print(f"result: {result.type} : {repr(result.value)}")
 				self.tokens.append(result)
 			elif type(result) == err:
 				print(f"appending '{result.name}' to errors")
@@ -119,19 +126,24 @@ class Lexer:
 		if Errors:
 			return Errors
 		
+		self.tokens.append(Token('EOF', ''))
+		
 		return err.OK
 
 
 if __name__ == "__main__":
-	with open("./examples/fizzbuzz.frukt", "r") as f:
-		source = f.read()
+	source = """x = 1
+y = 5
 
-	print(f"source:\n{source}")
+if x >= y print("wow")
+else print("no :(")"""
+
+	print(f"source:\n{source}\n")
 
 	lexer = Lexer(source)
 	error = lexer.lex()
 
-	print(f"error: {error}")
+	print(f"error: {error}\n")
 
 	if error != err.OK:
 		if type(error) == list:
@@ -142,5 +154,7 @@ if __name__ == "__main__":
 			print(f"Error happened: {err.name}")
 	
 	else:
+		token_dict = [{token.type:token.value} for token in lexer.tokens if token.type != 'WHITESPACE']
+		print(f"all tokens:\n{json.dumps(token_dict, indent=2)}")
 		for token in lexer.tokens:
-			print(f"{token.type}:{' '*(20-len(token.type))}{token.value}")
+			print(f"{' '*(10-len(token.type))}{token.type}:{repr(token.value)}")
